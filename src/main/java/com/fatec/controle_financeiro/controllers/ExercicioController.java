@@ -33,6 +33,25 @@ public class ExercicioController {
             return "Ímpar";
         }        
     }
+    @GetMapping("/contar-letras/{texto}")
+    public int contarLetras(@PathVariable String texto) {
+        return texto.replaceAll("\\s+", "").length();
+    }
     
+    @GetMapping("/idade-com-parametro/{idade}")
+    public String faixaEtaria(@PathVariable Integer idade) {
+        if (idade < 0) {
+            return "IDADE INVÁLIDA";
+        }
+        else if (idade <= 12) {
+            return "CRIANÇA";
+        } else if (idade <= 18) {
+            return "ADOLESCENTE";
+        } else if (idade <= 60) {
+            return "ADULTO";
+        } else{
+            return "IDOSO";
+        }
+    }
     
 }
